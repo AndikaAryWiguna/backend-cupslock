@@ -30,7 +30,7 @@ class Post extends Model
 
     public function kategori(): BelongsTo
     {
-        return $this->belongsTo(Kategori::class);
+        return $this->belongsTo(Category::class);
     }
 
     // Local Scope Untuk filter data
@@ -44,6 +44,7 @@ class Post extends Model
             return $query->whereHas('kategori', function ($query) use ($kategori){
                 $query->where('slug', $kategori);
             });
+            
         });
 
         // When untuk author

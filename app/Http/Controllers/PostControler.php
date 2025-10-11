@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kategori;
+use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -13,7 +13,7 @@ class PostControler extends Controller
     {
         $title = '';
         if(request('kategori')){
-            $kategori = Kategori::firstWhere('slug', request('kategori'));
+            $kategori = Category::firstWhere('slug', request('kategori'));
             $title = 'Artikel in: '. $kategori->name;
         }
         if(request('author')){

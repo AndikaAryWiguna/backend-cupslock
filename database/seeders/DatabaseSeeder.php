@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\Kategori;
+use App\Models\Category;
 use App\Models\Post;
+use App\Models\Product;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -30,9 +31,10 @@ class DatabaseSeeder extends Seeder
 
         // Jika ingin mengubah data factory supaya sedikit sesuai dengan keinginan kita
         // Maka buatkan seeder dulu kemudian akan dipanggil dengan cara di bawah
-        $this->call([KategoriSeeder::class, UserSeeder::class]);
+        $this->call([CategorySeeder::class, UserSeeder::class, ProductSeeder::class,]);
         Post::factory(50)->recycle([
-            Kategori::all(),
+            Category::all(),
+            Product::all(),
             User::all()
         ])->create();
                 

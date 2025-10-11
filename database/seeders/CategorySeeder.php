@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Kategori;
+use App\Models\Category;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class KategoriSeeder extends Seeder
+class CategorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,27 +17,27 @@ class KategoriSeeder extends Seeder
         // Kategori::factory(5)->create();
 
         // Jika Ingin Menampilkan data yang berbeda tidak sesuai dengan data random factory gunakan yang dibawah ini
-        Kategori::create([
+        Category::create([
             'name' => 'Web Design',
             'slug' => 'web-design',
             'color' => 'danger'
         ]);
-        Kategori::create([
+        Category::create([
             'name' => 'UI UX',
             'slug' => 'ui-ux',
             'color' => 'info'
         ]);
-        Kategori::create([
+        Category::create([
             'name' => 'Machine Learning',
             'slug' => 'machine-learning',
             'color' => 'warning'
         ]);
-        Kategori::create([
+        Category::create([
             'name' => 'Quality Assurance',
             'slug' => 'quality-assurance',
             'color' => 'primary'
         ]);
-        Kategori::create([
+        Category::create([
             'name' => 'System Analysis',
             'slug' => 'system-analysis',
             'color' => 'light'
