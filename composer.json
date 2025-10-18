@@ -10,6 +10,7 @@
     "require": {
         "php": "^8.2",
         "cviebrock/eloquent-sluggable": "^11.0",
+        "darkaonline/l5-swagger": "^9.0",
         "filament/tables": "^3.3",
         "itsgoingd/clockwork": "^5.2",
         "laravel/framework": "^11.0",
