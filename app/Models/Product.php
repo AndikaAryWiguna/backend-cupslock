@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Product extends Model
 {
-    use HasFactory; // ⬅️ ini WAJIB ADA
+    use HasFactory;
 
     protected $fillable = [
         'name',
@@ -17,4 +18,9 @@ class Product extends Model
         'image',
         'best_seller',
     ];
+
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
