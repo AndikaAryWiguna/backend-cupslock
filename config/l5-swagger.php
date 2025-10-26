@@ -7,7 +7,10 @@ return [
             'api' => [
                 'title' => 'CupClock API Documentation',
             ],
-
+            'headers' => [
+                'Accept' => 'application/json',
+                'Content-Type' => 'application/json',
+            ],
             'routes' => [
                 /*
                  * Route for accessing api documentation interface
@@ -176,12 +179,12 @@ return [
         'securityDefinitions' => [
             'securitySchemes' => [
                 'bearerAuth' => [
-                    'type' => 'apiKey',
-                    'description' => 'Enter token in format (Bearer <token>)',
-                    'name' => 'Authorization',
-                    'in' => 'header',
+                    'type' => 'http',
+                    'scheme' => 'bearer',
+                    'bearerFormat' => 'JWT',
+                    'description' => 'Input your Bearer token below.',
                 ],
-            ],
+            ],            
             'security' => [
                 [
                     'bearerAuth' => [],

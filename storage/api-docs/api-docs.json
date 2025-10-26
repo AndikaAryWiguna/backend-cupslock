@@ -156,6 +156,151 @@
                 ]
             }
         },
+        "/api/categories": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Ambil semua kategori",
+                "operationId": "13fa51e057842febe9cb4e4f8e8322de",
+                "responses": {
+                    "200": {
+                        "description": "Daftar kategori berhasil diambil"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Create a new category",
+                "operationId": "b2a99e7797d260c749538e90a2fb3ef6",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "color"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Technology"
+                                    },
+                                    "color": {
+                                        "description": "Select from predefined colors",
+                                        "type": "string",
+                                        "enum": [
+                                            "danger",
+                                            "warning",
+                                            "info",
+                                            "dark",
+                                            "light"
+                                        ],
+                                        "example": "info"
+                                    },
+                                    "slug": {
+                                        "type": "string",
+                                        "example": "technology"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Category created successfully"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/api/categories/{id}": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Ambil kategori berdasarkan ID",
+                "operationId": "4f3e1a64ae7a3e777636c3ad787aadbe",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Detail kategori berhasil diambil"
+                    },
+                    "404": {
+                        "description": "Kategori tidak ditemukan"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Update kategori",
+                "operationId": "238ea92f19a8430fffb8b32a913c79d3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Kategori berhasil diperbarui"
+                    },
+                    "404": {
+                        "description": "Kategori tidak ditemukan"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Hapus kategori berdasarkan ID",
+                "operationId": "9cfc588bd4392c5c7071dc698716139f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Kategori berhasil dihapus"
+                    },
+                    "404": {
+                        "description": "Kategori tidak ditemukan"
+                    }
+                }
+            }
+        },
         "/api/products": {
             "get": {
                 "tags": [
@@ -390,6 +535,10 @@
             "description": "Auth"
         },
         {
+            "name": "Categories",
+            "description": "Categories"
+        },
+        {
             "name": "Products",
             "description": "Products"
         }
@@ -397,10 +546,10 @@
     "components": {
         "securitySchemes": {
             "bearerAuth": {
-                "type": "apiKey",
-                "description": "Enter token in format (Bearer <token>)",
-                "name": "Authorization",
-                "in": "header"
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT",
+                "description": "Input your Bearer token below."
             }
         }
     },
